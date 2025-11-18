@@ -8,6 +8,7 @@
         "$path": "src/shared"
       },
       "Assets": {
+        "$className": "Folder",
         "Models": {
           "$path": "assets/models"
         },
