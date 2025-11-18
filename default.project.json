@@ -33,6 +33,11 @@
     },
     "StarterGui": {
       "$path": "assets/ui"
+    },
+    "Workspace": {
+      "Models": {
+        "$path": "assets/workspace_models"
+      }
     }
   }
 }
