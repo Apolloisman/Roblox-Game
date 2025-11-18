@@ -4,10 +4,12 @@
 *.rbxmx
 *.rbxl.lock
 
-# Ignore .rbxm files by default, but allow them in assets/models
+# Ignore .rbxm files by default, but allow them in assets/models and workspace_models
 *.rbxm
 !assets/models/
 !assets/models/*.rbxm
+!assets/workspace_models/
+!assets/workspace_models/*.rbxm
 
 # Aftman
 .aftman/
