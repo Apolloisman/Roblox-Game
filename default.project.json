@@ -1,0 +1,37 @@
+{
+  "name": "okAPI Game",
+  "servePort": 34872,
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Shared": {
+        "$path": "src/shared"
+      },
+      "Assets": {
+        "Models": {
+          "$path": "assets/models"
+        },
+        "Animations": {
+          "$path": "assets/animations"
+        },
+        "Textures": {
+          "$path": "assets/textures"
+        },
+        "Sounds": {
+          "$path": "assets/sounds"
+        }
+      }
+    },
+    "ServerScriptService": {
+      "$path": "src/server"
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$path": "src/client"
+      }
+    },
+    "StarterGui": {
+      "$path": "assets/ui"
+    }
+  }
+}
