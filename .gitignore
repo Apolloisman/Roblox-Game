@@ -1,9 +1,13 @@
 # Roblox/Rojo
 *.rbxl
 *.rbxlx
-*.rbxm
 *.rbxmx
 *.rbxl.lock
+
+# Ignore .rbxm files by default, but allow them in assets/models
+*.rbxm
+!assets/models/
+!assets/models/*.rbxm
 
 # Aftman
 .aftman/
