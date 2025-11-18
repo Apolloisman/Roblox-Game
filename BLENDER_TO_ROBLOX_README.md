@@ -1,78 +1,72 @@
 # Blender to Roblox Workflow
 
-Complete automation script to export models from Blender, commit to GitHub, convert to .rbxm, and sync to Roblox Studio.
+**Streamlined automation** - One script handles everything: Export from Blender → Git → Convert to .rbxm → Sync to Studio
 
 ## Quick Start
 
-### PowerShell (Recommended for Windows)
+### PowerShell (Windows - Recommended)
 
 ```powershell
-cd C:\Users\Tyler\okAPI
-.\blender_to_roblox.ps1 -ModelName "blackjack_table" -BlenderObjectPrefix "BJ_" -AutoCommit
+# Basic usage
+.\blender_to_roblox.ps1
+
+# With options
+.\blender_to_roblox.ps1 -ModelName "my_model" -ObjectPrefix "MY_" -Destination "Workspace" -AutoCommit
 ```
 
-### Python
+### Python (Cross-platform)
 
 ```bash
-cd C:\Users\Tyler\okAPI
-python blender_to_roblox.py blackjack_table BJ_ --commit
+# Basic usage
+python blender_to_roblox.py
+
+# With options
+python blender_to_roblox.py my_model MY_ Workspace --commit
 ```
 
 ## Parameters
 
 - `-ModelName` / `model_name`: Name of the model (default: "blackjack_table")
-- `-BlenderObjectPrefix` / `object_prefix`: Prefix for Blender objects to export (default: "BJ_")
-- `-AutoCommit`: Automatically commit and push to Git (optional)
-- `-SkipBlenderExport`: Skip Blender export step (if FBX already exists)
-- `-SkipGit`: Skip Git operations
+- `-ObjectPrefix` / `object_prefix`: Prefix for Blender objects to export (default: "BJ_")
+- `-Destination`: Where to place model - "Workspace" or "ReplicatedStorage" (default: "Workspace")
+- `-AutoCommit` / `--commit`: Automatically commit and push to Git
+- `-SkipBlenderExport` / `--skip-export`: Skip Blender export step (if FBX already exists)
+
+## Examples
+
+```powershell
+# Export blackjack table to Workspace with auto-commit
+.\blender_to_roblox.ps1 -ModelName "blackjack_table" -AutoCommit
+
+# Export custom model to ReplicatedStorage
+.\blender_to_roblox.ps1 -ModelName "weapon_model" -ObjectPrefix "WP_" -Destination "ReplicatedStorage"
+
+# Skip Blender export (FBX already exists)
+.\blender_to_roblox.ps1 -ModelName "my_model" -SkipBlenderExport
+```
 
 ## Workflow Steps
 
-1. **Export from Blender**: Exports all objects with the specified prefix to FBX
-2. **Commit to Git**: Stages and commits the FBX file to GitHub
-3. **Convert to .rbxm**: Guides you through importing FBX into Roblox Studio and exporting as .rbxm
-4. **Sync to Studio**: The .rbxm file automatically syncs to Studio via Rojo
+The script automates:
+
+1. **Export from Blender**: Checks for FBX file, waits if needed
+2. **Commit to Git**: Stages and commits the FBX file
+3. **Convert to .rbxm**: Guides you through importing FBX into Studio and exporting as .rbxm
+4. **Sync to Studio**: Commits .rbxm and provides instructions for final import
 
 ## Prerequisites
 
-- Blender installed and running (for export)
+- Blender (for export)
 - Roblox Studio installed
-- Rojo server running (`rojo serve` or `C:\Users\Tyler\Tools\rojo\rojo.exe serve`)
+- Rojo server running (`C:\Users\Tyler\Tools\rojo\rojo.exe serve`)
 - Git configured
 - Rojo plugin installed in Roblox Studio and connected
 
-## Manual Steps
+## Important Notes
 
-If automation fails, you can complete steps manually:
-
-1. **Export from Blender**:
-   - Select all objects with your prefix (e.g., "BJ_")
-   - File > Export > FBX (.fbx)
-   - Save to `assets/models/your_model.fbx`
-
-2. **Commit to Git**:
-   ```powershell
-   git add assets/models/your_model.fbx
-   git commit -m "Export your_model from Blender"
-   git push
-   ```
-
-3. **Convert to .rbxm**:
-   - Open Roblox Studio
-   - Make sure Rojo is connected
-   - Navigate to: ReplicatedStorage > Assets > Models
-   - Drag and drop the FBX file into Studio
-   - Right-click imported model > Export Selection...
-   - Save as `assets/models/your_model.rbxm`
-
-4. **Commit .rbxm**:
-   ```powershell
-   git add assets/models/your_model.rbxm
-   git commit -m "Add your_model as Roblox model"
-   git push
-   ```
-
-The .rbxm file will automatically sync to Studio via Rojo!
+- **.rbxm files don't auto-sync via Rojo** - You need to manually drag the .rbxm file into Studio's Workspace or ReplicatedStorage
+- The script handles Git commits, but you can skip with `-AutoCommit` flag
+- FBX files are stored in `assets/models/` or `assets/workspace_models/` based on destination
 
 ## Troubleshooting
 
@@ -81,21 +75,19 @@ The .rbxm file will automatically sync to Studio via Rojo!
 C:\Users\Tyler\Tools\rojo\rojo.exe serve
 ```
 
-### Blender export not working
-- Make sure Blender is running
-- Check that objects have the correct prefix
-- Export manually from Blender if needed
+### Model not appearing in Studio
+- Make sure you manually drag the .rbxm file into Studio
+- Check that Rojo plugin is connected (localhost:34872)
+- Verify the file exists in the correct `assets/` folder
 
-### Studio import fails
-- Make sure Rojo plugin is connected (localhost:34872)
-- Check that the Models folder exists in ReplicatedStorage > Assets
-- Try restarting Studio and reconnecting Rojo
+### Blender export not working
+- Export manually from Blender: File > Export > FBX
+- Save to the correct `assets/` folder
+- Run script with `-SkipBlenderExport` flag
 
 ## Files
 
-- `blender_to_roblox.ps1` - Main PowerShell workflow script
-- `blender_to_roblox.py` - Python version of workflow script
-- `export_blender_model.py` - Blender export helper (for MCP integration)
-- `convert_fbx_to_rbxm.ps1` - Standalone FBX to .rbxm converter
-- `convert_fbx_to_rbxm.py` - Python version of converter
+- `blender_to_roblox.ps1` - Main PowerShell script (all-in-one)
+- `blender_to_roblox.py` - Python version (all-in-one)
 
+That's it! Just two files for the complete workflow.
