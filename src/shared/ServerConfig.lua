@@ -1,5 +1,6 @@
 -- Server Configuration
 -- Defines server types and teleportation settings
+-- IMPORTANT: Set your Place IDs here!
 
 return {
 	-- Server Types
@@ -10,13 +11,13 @@ return {
 	},
 	
 	-- Current Server Type (set per server)
-	CurrentServerType = "Main", -- Change this per server
+	CurrentServerType = "Main", -- Change this per server: "Main", "Dungeon", or "UpperTier"
 	
 	-- Teleportation Settings
 	Teleportation = {
 		-- Main server has all starting areas
 		MainServer = {
-			PlaceId = nil, -- Set your main server place ID
+			PlaceId = nil, -- ⚠️ SET THIS: Your main server Place ID
 			Areas = {
 				"School",
 				"TownHall",
@@ -29,19 +30,21 @@ return {
 		},
 		
 		-- Dungeon servers (separate instances)
+		-- ⚠️ SET THESE: Create 5 separate places and set their Place IDs
 		DungeonServers = {
-			Tier1 = {PlaceId = nil, Name = "Tier 1 Dungeons"},
-			Tier2 = {PlaceId = nil, Name = "Tier 2 Dungeons"},
-			Tier3 = {PlaceId = nil, Name = "Tier 3 Dungeons"},
-			Tier4 = {PlaceId = nil, Name = "Tier 4 Dungeons"},
-			Tier5 = {PlaceId = nil, Name = "Tier 5 Dungeons"},
+			Tier1 = {PlaceId = nil, Name = "Tier 1 Dungeon"}, -- ⚠️ SET THIS
+			Tier2 = {PlaceId = nil, Name = "Tier 2 Dungeon"}, -- ⚠️ SET THIS
+			Tier3 = {PlaceId = nil, Name = "Tier 3 Dungeon"}, -- ⚠️ SET THIS
+			Tier4 = {PlaceId = nil, Name = "Tier 4 Dungeon"}, -- ⚠️ SET THIS
+			Tier5 = {PlaceId = nil, Name = "Tier 5 Dungeon"}, -- ⚠️ SET THIS
 		},
 		
 		-- Upper tier servers (for higher tier players)
+		-- ⚠️ SET THESE: Create 3 separate places and set their Place IDs
 		UpperTierServers = {
-			Artisan = {PlaceId = nil, Name = "Artisan District", RequiredTier = "Artisan"},
-			Merchant = {PlaceId = nil, Name = "Merchant District", RequiredTier = "Merchant"},
-			Noble = {PlaceId = nil, Name = "Noble Estate", RequiredTier = "Noble"},
+			Artisan = {PlaceId = nil, Name = "Artisan District", RequiredTier = "Artisan"}, -- ⚠️ SET THIS
+			Merchant = {PlaceId = nil, Name = "Merchant District", RequiredTier = "Merchant"}, -- ⚠️ SET THIS
+			Noble = {PlaceId = nil, Name = "Noble Estate", RequiredTier = "Noble"}, -- ⚠️ SET THIS
 		},
 	},
 	
@@ -67,4 +70,3 @@ return {
 		},
 	},
 }
-
