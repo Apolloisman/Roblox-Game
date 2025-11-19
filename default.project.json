@@ -20,6 +20,15 @@
         },
         "Sounds": {
           "$path": "assets/sounds"
+        },
+        "UI": {
+          "$className": "Folder",
+          "Images": {
+            "$path": "assets/ui/images"
+          },
+          "Icons": {
+            "$path": "assets/ui/icons"
+          }
         }
       }
     },
