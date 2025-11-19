@@ -194,8 +194,8 @@ end
 
 function GameUI:OpenDungeonMenu()
 	-- Open dungeon volunteering menu
-	-- This will be implemented in DungeonUI
-	warn("Dungeon menu - to be implemented")
+	local DungeonUI = require(script.Parent.DungeonUI)
+	DungeonUI:ShowDungeonMenu()
 end
 
 function GameUI:OpenTravelMenu()
@@ -206,15 +206,14 @@ end
 
 function GameUI:OpenClanMenu()
 	-- Open clan menu
-	-- This will be implemented in ClanUI
-	warn("Clan menu - to be implemented")
+	local ClanUI = require(script.Parent.ClanUI)
+	ClanUI:ShowClanMenu()
 end
 
 function GameUI:OpenWorkMenu()
 	-- Open work area menu
-	local WorkAreaUI = require(script.Parent.WorkAreaUI)
-	-- Show work area selection
-	warn("Work menu - select work area")
+	local TeleportUI = require(script.Parent.TeleportUI)
+	TeleportUI:ShowTeleportMenu() -- Work areas are in travel menu
 end
 
 return GameUI
