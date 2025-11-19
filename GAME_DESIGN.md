@@ -227,6 +227,37 @@ Tiers:
 - DungeonUI - Dungeon volunteering (to be built)
 - ClanUI - Clan management (to be built)
 
+## NPC System
+
+### NPCs with Stories
+
+**Starting Area NPCs:**
+- **Headmaster Thorne** - Story NPC with city history
+- **Elder Maria** - Social NPC with advice and wisdom
+
+**Shop NPCs:**
+- **Gareth the Blacksmith** - Weapons shop with progression-based inventory
+- **Lydia the Armorer** - Armor shop with personal story
+- **Marcus the Merchant** - General store with supplies
+- **Sophia the Realtor** - Housing upgrades
+
+**Social NPCs:**
+- **Commander Valen** - Clan recruiter with competition stories
+
+### Story Progression
+
+- **Dialogue changes** based on player tier/level
+- **Personal stories** that unfold as you progress
+- **Relationship system** - NPCs remember you
+- **Progressive inventory** - Shops unlock better items as you tier up
+
+### Shop System
+
+- **Tier-based access** - Better items unlock with higher tiers
+- **NPC personalities** - Each shopkeeper has unique dialogue
+- **Story integration** - Shopkeepers share stories as you progress
+- **Visual emphasis** - NPCs are the focus of social areas
+
 ## Future Enhancements
 
 - [ ] Full dungeon gameplay (combat, enemies, bosses)
@@ -238,6 +269,8 @@ Tiers:
 - [ ] City districts
 - [ ] Political system (elections, laws)
 - [ ] Events and seasons
+- [ ] More NPCs with branching stories
+- [ ] NPC quests and missions
 
 ## Design Philosophy
 
