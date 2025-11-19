@@ -244,8 +244,11 @@ Write-Host "1. Open Roblox Studio" -ForegroundColor White
 Write-Host "2. Ensure Rojo is connected (localhost:$ROJO_PORT)" -ForegroundColor White
 Write-Host "3. Navigate to: $targetLocation" -ForegroundColor White
 Write-Host "4. Drag and drop: $((Resolve-Path $fbxPath).Path)" -ForegroundColor Cyan
-Write-Host "5. Right-click model -> Export Selection..." -ForegroundColor White
-Write-Host "6. Save as: $((Resolve-Path $rbxmPath).Path)" -ForegroundColor Cyan
+Write-Host "5. Model will be auto-anchored (if AnchorAllModels.server.lua is in ServerScriptService)" -ForegroundColor Green
+Write-Host "6. Right-click model -> Export Selection..." -ForegroundColor White
+Write-Host "7. Save as: $((Resolve-Path $rbxmPath).Path)" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "NOTE: The exported .rbxm will have Anchored=true on all parts!" -ForegroundColor Green
 Write-Host ""
 
 $studioRunning = Get-Process | Where-Object { $_.ProcessName -like "*RobloxStudio*" }

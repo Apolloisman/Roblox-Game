@@ -1,113 +1,49 @@
 # Studio Setup Scripts
 
-These scripts automatically set up models and interactions in Roblox Studio.
+Helper scripts for setting up your game in Roblox Studio.
 
-## Quick Setup
+## Auto-Anchor Script
 
-### 1. Copy Scripts to Studio
+### AnchorAllModels.server.lua
 
-1. Open your **main server** place in Roblox Studio
-2. In Studio, go to **ServerScriptService**
-3. Copy these scripts into ServerScriptService:
-   - `SetupStartingArea.server.lua` - Creates school/town hall
-   - `SetupNPCs.server.lua` - Creates all NPCs with interactions
-   - `SetupTeleporters.server.lua` - Creates teleporters
-   - `SetupWorkAreas.server.lua` - Creates work stations
+**What it does:**
+- Automatically anchors all parts in all models (prevents falling)
+- Sets CanCollide = true on all parts
+- Sets appropriate materials based on part names
+- Auto-anchors new models when they're added to Workspace
 
-### 2. Run Scripts
+**How to use:**
+1. Copy `AnchorAllModels.server.lua` to **ServerScriptService**
+2. The script runs automatically when you play
+3. All models (existing and new) will be anchored automatically
 
-1. Make sure Rojo is connected and syncing
-2. The scripts will run automatically when you play
-3. All models will be created in workspace
+**What gets anchored:**
+- ✅ All parts in all models
+- ✅ New models added to Workspace
+- ✅ Individual parts added to Workspace
 
-### 3. Configure Place IDs
+**Properties set:**
+- `Anchored = true` (prevents falling)
+- `CanCollide = true` (models collide with players)
+- Materials set based on part names (Ground/Platform → Grass, Roof → Metal, etc.)
 
-1. Edit `src/shared/ServerConfig.lua`
-2. Set your Place IDs:
-   ```lua
-   MainServer = {
-       PlaceId = YOUR_MAIN_PLACE_ID, -- Get from Roblox website
-   },
-   DungeonServers = {
-       Tier1 = {PlaceId = YOUR_TIER1_PLACE_ID},
-       -- etc.
-   },
-   ```
+## Why This Script?
 
-## Getting Place IDs
+When you import models from Blender:
+- Parts are **not anchored** by default
+- They fall due to gravity
+- You'd have to manually anchor each part
 
-1. **Create Places:**
-   - Go to Roblox Creator Dashboard
-   - Create new places (1 main + 5 dungeons + 3 upper tiers = 9 places total)
+**This script fixes that automatically!** 🎉
 
-2. **Get Place IDs:**
-   - Open each place in Studio
-   - Go to File → Publish to Roblox
-   - The Place ID is in the URL: `https://www.roblox.com/games/PLACE_ID/...`
-   - Or check in Creator Dashboard → Places
+## Usage
 
-3. **Set in Config:**
-   - Edit `ServerConfig.lua`
-   - Replace `nil` with your Place IDs
+1. **Place script in ServerScriptService** (via Rojo sync)
+2. **Import your models** from Blender
+3. **Models are automatically anchored** - no manual work needed!
+4. **Keep the script** - it will anchor future models too
 
-## What Each Script Does
+## Note
 
-### SetupStartingArea.server.lua
-- Creates spawn location
-- Builds simple school building
-- Builds simple town hall
-- Creates ground plane
-
-### SetupNPCs.server.lua
-- Creates all 7 NPCs from NPCConfig
-- Adds ProximityPrompts
-- Connects to RemoteEvents
-- Adds name labels
-
-### SetupTeleporters.server.lua
-- Creates 5 dungeon teleporters
-- Creates 3 upper tier teleporters
-- Adds ProximityPrompts
-- Connects to TeleportManager
-
-### SetupWorkAreas.server.lua
-- Creates work stations for farms
-- Creates work stations for factories
-- Creates work stations for houses
-- Adds ProximityPrompts
-
-## Customization
-
-After scripts run, you can:
-- Replace auto-generated models with custom ones
-- Adjust positions
-- Change colors/materials
-- Add more details
-
-The scripts create **functional** but **basic** models. Replace them with your custom models later!
-
-## Troubleshooting
-
-**Scripts not running?**
-- Make sure Rojo is syncing
-- Check Output window for errors
-- Verify all shared modules are loaded
-
-**Models not appearing?**
-- Check workspace
-- Look for errors in Output
-- Verify positions are correct
-
-**Teleportation not working?**
-- Set Place IDs in ServerConfig.lua
-- Verify Place IDs are correct
-- Check TeleportService permissions
-
-## Next Steps
-
-1. Run all setup scripts
-2. Set Place IDs
-3. Test teleportation
-4. Replace basic models with custom ones
-5. Add more details and decorations
+Models created in Blender will be automatically anchored when imported. The exported .rbxm files will have Anchored=true on all parts, so they won't fall even if you remove this script later.
 
