@@ -21,9 +21,10 @@ Complete automation pipeline for Blender and Fusion 360 models to Roblox Studio 
 
 - **Unified workflow** - One script handles all sources (Blender, Fusion 360, manual)
 - **Auto Git integration** - Automatically commits and pushes to GitHub
-- **Rojo sync** - Integrates with Rojo for Studio synchronization
+- **Rojo sync** - Code and images auto-sync to Roblox Studio instantly
 - **Multiple destinations** - Workspace or ReplicatedStorage
 - **Error handling** - Robust error checking and user guidance
+- **Quick commits** - Use `.\auto_commit.ps1` for easy Git commits
 
 ## Prerequisites
 
@@ -111,9 +112,31 @@ C:\Users\Tyler\Tools\rojo\rojo.exe serve
 - .rbxm files don't auto-sync via Rojo
 - Manually drag the .rbxm file into Studio's Workspace or ReplicatedStorage
 
+## Code & Images Auto-Sync
+
+**Important:** Code (`.lua`) and images (`.png`, `.jpg`) **auto-sync to Roblox Studio** via Rojo when you save files. They do NOT auto-commit to Git.
+
+**Quick commit helper:**
+```powershell
+# Commit and push everything
+.\auto_commit.ps1 -Message "Add new feature" -Push
+
+# Just commit (don't push)
+.\auto_commit.ps1 -Message "Update UI"
+```
+
+**Workflow:**
+1. Edit code/images → **Auto-syncs to Studio** ✨
+2. Test in Studio
+3. Commit when ready → `.\auto_commit.ps1 -Push`
+
+See `WORKFLOW_EXPLAINED.md` for detailed workflow information.
+
 ## Documentation
 
+- `WORKFLOW_EXPLAINED.md` - **Start here!** Complete workflow explanation
 - `ROBLOX_WORKFLOW.md` - Basic Roblox + GitHub workflow
 - `BLENDER_TO_ROBLOX_README.md` - Blender-specific details
 - `FUSION360_MCP_SETUP.md` - Fusion 360 MCP setup guide
+- `UI_TOOLS_INTEGRATION.md` - Figma, Cursor, and design tools integration
 
