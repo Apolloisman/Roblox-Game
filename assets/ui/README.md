@@ -2,13 +2,19 @@
 
 This directory contains all UI-related assets for your Roblox game.
 
+## 📖 **Start Here: Organization Guide**
+
+See `ORGANIZATION.md` for complete details on where to put everything!
+
 ## Structure
 
 ```
 assets/ui/
-├── images/          # UI background images, textures
-├── icons/           # Icon files (from Solar Icons, etc.)
-├── designs/         # Figma design files, mockups
+├── buttons/         # Button images (menu/, game/)
+├── icons/           # Icon files (game/, ui/)
+├── images/          # Background images, textures (auto-syncs to Roblox)
+├── inspiration/     # Design inspiration (screenshots/, references/)
+├── designs/         # Figma files, mockups
 └── components/      # Reusable UI component definitions
 ```
 
