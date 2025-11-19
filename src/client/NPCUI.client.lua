@@ -57,16 +57,22 @@ function NPCUI:CreateDialogueUI()
 	screenGui.ResetOnSpawn = false
 	screenGui.Parent = playerGui
 	
-	-- Dialogue Frame
+	-- Dialogue Frame with background image
 	local dialogueFrame = Instance.new("Frame")
 	dialogueFrame.Name = "DialogueFrame"
 	dialogueFrame.Size = UDim2.new(0, 600, 0, 200)
 	dialogueFrame.Position = UDim2.new(0.5, -300, 1, -250)
-	dialogueFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
-	dialogueFrame.BorderSizePixel = 2
-	dialogueFrame.BorderColor3 = Color3.fromRGB(100, 150, 255)
+	dialogueFrame.BackgroundTransparency = 1
 	dialogueFrame.Visible = false
 	dialogueFrame.Parent = screenGui
+	
+	-- Background image
+	local dialogueBg = Instance.new("ImageLabel")
+	dialogueBg.Name = "Background"
+	dialogueBg.Size = UDim2.new(1, 0, 1, 0)
+	dialogueBg.BackgroundTransparency = 1
+	dialogueBg.Image = "rbxasset://assets/ui/images/dialogue_background.png"
+	dialogueBg.Parent = dialogueFrame
 	
 	-- NPC Name Label
 	local nameLabel = Instance.new("TextLabel")
@@ -96,23 +102,20 @@ function NPCUI:CreateDialogueUI()
 	dialogueText.TextYAlignment = Enum.TextYAlignment.Top
 	dialogueText.Parent = dialogueFrame
 	
-	-- Close Button
-	local closeButton = Instance.new("TextButton")
+	-- Close Button with image
+	local closeButton = Instance.new("ImageButton")
 	closeButton.Name = "CloseButton"
 	closeButton.Size = UDim2.new(0, 100, 0, 35)
 	closeButton.Position = UDim2.new(1, -110, 1, -45)
-	closeButton.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
-	closeButton.Text = "Close"
-	closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	closeButton.TextSize = 14
-	closeButton.Font = Enum.Font.GothamBold
+	closeButton.Image = "rbxasset://assets/ui/buttons/menu/close_button.png"
+	closeButton.BackgroundTransparency = 1
 	closeButton.Parent = dialogueFrame
 	
 	closeButton.MouseButton1Click:Connect(function()
 		dialogueFrame.Visible = false
 	end)
 	
-	-- Shop Button (if NPC is shopkeeper)
+	-- Shop Button (if NPC is shopkeeper) - using text button for now
 	local shopButton = Instance.new("TextButton")
 	shopButton.Name = "ShopButton"
 	shopButton.Size = UDim2.new(0, 100, 0, 35)
@@ -171,16 +174,13 @@ function NPCUI:CreateShopUI()
 	scrollFrame.ScrollBarThickness = 8
 	scrollFrame.Parent = shopFrame
 	
-	-- Close Button
-	local closeButton = Instance.new("TextButton")
+	-- Close Button with image
+	local closeButton = Instance.new("ImageButton")
 	closeButton.Name = "CloseButton"
 	closeButton.Size = UDim2.new(0, 100, 0, 35)
 	closeButton.Position = UDim2.new(0.5, -50, 1, -45)
-	closeButton.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
-	closeButton.Text = "Close"
-	closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	closeButton.TextSize = 14
-	closeButton.Font = Enum.Font.GothamBold
+	closeButton.Image = "rbxasset://assets/ui/buttons/menu/close_button.png"
+	closeButton.BackgroundTransparency = 1
 	closeButton.Parent = shopFrame
 	
 	closeButton.MouseButton1Click:Connect(function()

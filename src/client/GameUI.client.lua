@@ -41,7 +41,7 @@ function GameUI:CreateMainUI()
 	screenGui.ResetOnSpawn = false
 	screenGui.Parent = playerGui
 	
-	-- Main Frame
+	-- Main Frame with background image
 	mainFrame = Instance.new("Frame")
 	mainFrame.Name = "MainFrame"
 	mainFrame.Size = UDim2.new(0, 300, 0, 200)
@@ -49,6 +49,14 @@ function GameUI:CreateMainUI()
 	mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 	mainFrame.BorderSizePixel = 0
 	mainFrame.Parent = screenGui
+	
+	-- Add HUD background image
+	local hudBg = Instance.new("ImageLabel")
+	hudBg.Name = "HUDBackground"
+	hudBg.Size = UDim2.new(1, 0, 1, 0)
+	hudBg.BackgroundTransparency = 1
+	hudBg.Image = "rbxasset://assets/ui/images/hud_background.png"
+	hudBg.Parent = mainFrame
 	
 	-- Gold Label
 	goldLabel = Instance.new("TextLabel")
@@ -111,32 +119,26 @@ function GameUI:CreateMainUI()
 	buttonsFrame.Parent = mainFrame
 	
 	-- Row 1
-	-- Dungeon Button
-	local dungeonButton = Instance.new("TextButton")
+	-- Dungeon Button with image
+	local dungeonButton = Instance.new("ImageButton")
 	dungeonButton.Name = "DungeonButton"
 	dungeonButton.Size = UDim2.new(0.48, 0, 0, 45)
 	dungeonButton.Position = UDim2.new(0, 0, 0, 0)
-	dungeonButton.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
-	dungeonButton.Text = "Dungeons"
-	dungeonButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	dungeonButton.TextSize = 14
-	dungeonButton.Font = Enum.Font.GothamBold
+	dungeonButton.Image = "rbxasset://assets/ui/buttons/menu/dungeons_button.png"
+	dungeonButton.BackgroundTransparency = 1
 	dungeonButton.Parent = buttonsFrame
 	
 	dungeonButton.MouseButton1Click:Connect(function()
 		GameUI:OpenDungeonMenu()
 	end)
 	
-	-- Travel Button
-	local travelButton = Instance.new("TextButton")
+	-- Travel Button with image
+	local travelButton = Instance.new("ImageButton")
 	travelButton.Name = "TravelButton"
 	travelButton.Size = UDim2.new(0.48, 0, 0, 45)
 	travelButton.Position = UDim2.new(0.52, 0, 0, 0)
-	travelButton.BackgroundColor3 = Color3.fromRGB(150, 100, 255)
-	travelButton.Text = "Travel"
-	travelButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	travelButton.TextSize = 14
-	travelButton.Font = Enum.Font.GothamBold
+	travelButton.Image = "rbxasset://assets/ui/buttons/menu/travel_button.png"
+	travelButton.BackgroundTransparency = 1
 	travelButton.Parent = buttonsFrame
 	
 	travelButton.MouseButton1Click:Connect(function()
@@ -144,32 +146,26 @@ function GameUI:CreateMainUI()
 	end)
 	
 	-- Row 2
-	-- Clan Button
-	local clanButton = Instance.new("TextButton")
+	-- Clan Button with image
+	local clanButton = Instance.new("ImageButton")
 	clanButton.Name = "ClanButton"
 	clanButton.Size = UDim2.new(0.48, 0, 0, 45)
 	clanButton.Position = UDim2.new(0, 0, 0, 55)
-	clanButton.BackgroundColor3 = Color3.fromRGB(255, 150, 100)
-	clanButton.Text = "Clan"
-	clanButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	clanButton.TextSize = 14
-	clanButton.Font = Enum.Font.GothamBold
+	clanButton.Image = "rbxasset://assets/ui/buttons/menu/clan_button.png"
+	clanButton.BackgroundTransparency = 1
 	clanButton.Parent = buttonsFrame
 	
 	clanButton.MouseButton1Click:Connect(function()
 		GameUI:OpenClanMenu()
 	end)
 	
-	-- Work Button
-	local workButton = Instance.new("TextButton")
+	-- Work Button with image
+	local workButton = Instance.new("ImageButton")
 	workButton.Name = "WorkButton"
 	workButton.Size = UDim2.new(0.48, 0, 0, 45)
 	workButton.Position = UDim2.new(0.52, 0, 0, 55)
-	workButton.BackgroundColor3 = Color3.fromRGB(100, 255, 150)
-	workButton.Text = "Work"
-	workButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	workButton.TextSize = 14
-	workButton.Font = Enum.Font.GothamBold
+	workButton.Image = "rbxasset://assets/ui/buttons/menu/work_button.png"
+	workButton.BackgroundTransparency = 1
 	workButton.Parent = buttonsFrame
 	
 	workButton.MouseButton1Click:Connect(function()
