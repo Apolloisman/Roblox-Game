@@ -14,7 +14,7 @@ PlayerManager:Initialize()
 StartingArea:Initialize()
 DungeonManager:Initialize()
 ClanManager:Initialize()
-RemoteEvents -- This runs the script which sets up events
+require(script.RemoteEvents) -- This sets up RemoteEvents
 
 print("All systems initialized!")
 
