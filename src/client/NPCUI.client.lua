@@ -58,15 +58,15 @@ function NPCUI:CreateDialogueUI()
 	screenGui.Parent = playerGui
 	
 	-- Dialogue Frame
-	DialogueFrame = Instance.new("Frame")
-	DialogueFrame.Name = "DialogueFrame"
-	DialogueFrame.Size = UDim2.new(0, 600, 0, 200)
-	DialogueFrame.Position = UDim2.new(0.5, -300, 1, -250)
-	DialogueFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
-	DialogueFrame.BorderSizePixel = 2
-	DialogueFrame.BorderColor3 = Color3.fromRGB(100, 150, 255)
-	DialogueFrame.Visible = false
-	DialogueFrame.Parent = screenGui
+	local dialogueFrame = Instance.new("Frame")
+	dialogueFrame.Name = "DialogueFrame"
+	dialogueFrame.Size = UDim2.new(0, 600, 0, 200)
+	dialogueFrame.Position = UDim2.new(0.5, -300, 1, -250)
+	dialogueFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
+	dialogueFrame.BorderSizePixel = 2
+	dialogueFrame.BorderColor3 = Color3.fromRGB(100, 150, 255)
+	dialogueFrame.Visible = false
+	dialogueFrame.Parent = screenGui
 	
 	-- NPC Name Label
 	local nameLabel = Instance.new("TextLabel")
@@ -79,7 +79,7 @@ function NPCUI:CreateDialogueUI()
 	nameLabel.TextSize = 20
 	nameLabel.Font = Enum.Font.GothamBold
 	nameLabel.TextXAlignment = Enum.TextXAlignment.Left
-	nameLabel.Parent = DialogueFrame
+	nameLabel.Parent = dialogueFrame
 	
 	-- Dialogue Text
 	local dialogueText = Instance.new("TextLabel")
@@ -94,7 +94,7 @@ function NPCUI:CreateDialogueUI()
 	dialogueText.TextWrapped = true
 	dialogueText.TextXAlignment = Enum.TextXAlignment.Left
 	dialogueText.TextYAlignment = Enum.TextYAlignment.Top
-	dialogueText.Parent = DialogueFrame
+	dialogueText.Parent = dialogueFrame
 	
 	-- Close Button
 	local closeButton = Instance.new("TextButton")
@@ -106,10 +106,10 @@ function NPCUI:CreateDialogueUI()
 	closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 	closeButton.TextSize = 14
 	closeButton.Font = Enum.Font.GothamBold
-	closeButton.Parent = DialogueFrame
+	closeButton.Parent = dialogueFrame
 	
 	closeButton.MouseButton1Click:Connect(function()
-		DialogueFrame.Visible = false
+		dialogueFrame.Visible = false
 	end)
 	
 	-- Shop Button (if NPC is shopkeeper)
@@ -123,7 +123,7 @@ function NPCUI:CreateDialogueUI()
 	shopButton.TextSize = 14
 	shopButton.Font = Enum.Font.GothamBold
 	shopButton.Visible = false
-	shopButton.Parent = DialogueFrame
+	shopButton.Parent = dialogueFrame
 	
 	shopButton.MouseButton1Click:Connect(function()
 		if NPCUI.CurrentNPC then
@@ -131,7 +131,7 @@ function NPCUI:CreateDialogueUI()
 		end
 	end)
 	
-	NPCUI.DialogueFrame = DialogueFrame
+	NPCUI.DialogueFrame = dialogueFrame
 end
 
 function NPCUI:CreateShopUI()
@@ -139,15 +139,15 @@ function NPCUI:CreateShopUI()
 	if not screenGui then return end
 	
 	-- Shop Frame
-	ShopFrame = Instance.new("Frame")
-	ShopFrame.Name = "ShopFrame"
-	ShopFrame.Size = UDim2.new(0, 500, 0, 600)
-	ShopFrame.Position = UDim2.new(0.5, -250, 0.5, -300)
-	ShopFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
-	ShopFrame.BorderSizePixel = 2
-	ShopFrame.BorderColor3 = Color3.fromRGB(255, 150, 100)
-	ShopFrame.Visible = false
-	ShopFrame.Parent = screenGui
+	local shopFrame = Instance.new("Frame")
+	shopFrame.Name = "ShopFrame"
+	shopFrame.Size = UDim2.new(0, 500, 0, 600)
+	shopFrame.Position = UDim2.new(0.5, -250, 0.5, -300)
+	shopFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+	shopFrame.BorderSizePixel = 2
+	shopFrame.BorderColor3 = Color3.fromRGB(255, 150, 100)
+	shopFrame.Visible = false
+	shopFrame.Parent = screenGui
 	
 	-- Title
 	local titleLabel = Instance.new("TextLabel")
@@ -159,7 +159,7 @@ function NPCUI:CreateShopUI()
 	titleLabel.TextColor3 = Color3.fromRGB(255, 215, 0)
 	titleLabel.TextSize = 24
 	titleLabel.Font = Enum.Font.GothamBold
-	titleLabel.Parent = ShopFrame
+	titleLabel.Parent = shopFrame
 	
 	-- Scrolling Frame for items
 	local scrollFrame = Instance.new("ScrollingFrame")
@@ -169,7 +169,7 @@ function NPCUI:CreateShopUI()
 	scrollFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
 	scrollFrame.BorderSizePixel = 0
 	scrollFrame.ScrollBarThickness = 8
-	scrollFrame.Parent = ShopFrame
+	scrollFrame.Parent = shopFrame
 	
 	-- Close Button
 	local closeButton = Instance.new("TextButton")
@@ -181,13 +181,13 @@ function NPCUI:CreateShopUI()
 	closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 	closeButton.TextSize = 14
 	closeButton.Font = Enum.Font.GothamBold
-	closeButton.Parent = ShopFrame
+	closeButton.Parent = shopFrame
 	
 	closeButton.MouseButton1Click:Connect(function()
-		ShopFrame.Visible = false
+		shopFrame.Visible = false
 	end)
 	
-	NPCUI.ShopFrame = ShopFrame
+	NPCUI.ShopFrame = shopFrame
 	NPCUI.ShopScrollFrame = scrollFrame
 end
 
