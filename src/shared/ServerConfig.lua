@@ -17,7 +17,7 @@ return {
 	Teleportation = {
 		-- Main server has all starting areas
 		MainServer = {
-			PlaceId = nil, -- ⚠️ SET THIS: Your main server Place ID
+			PlaceId = 136933591262687, -- Main server Place ID
 			Areas = {
 				"School",
 				"TownHall",
