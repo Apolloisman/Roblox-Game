@@ -5,6 +5,7 @@ local PlayerManager = require(script.PlayerManager)
 local StartingArea = require(script.StartingArea)
 local DungeonManager = require(script.DungeonManager)
 local ClanManager = require(script.ClanManager)
+local NPCManager = require(script.NPCManager)
 local RemoteEvents = require(script.RemoteEvents)
 
 -- Initialize all systems
@@ -14,6 +15,7 @@ PlayerManager:Initialize()
 StartingArea:Initialize()
 DungeonManager:Initialize()
 ClanManager:Initialize()
+NPCManager:Initialize()
 require(script.RemoteEvents) -- This sets up RemoteEvents
 
 print("All systems initialized!")

@@ -43,6 +43,19 @@ local JoinFamily = Instance.new("RemoteEvent")
 JoinFamily.Name = "JoinFamily"
 JoinFamily.Parent = RemoteEvents
 
+-- NPC Events
+local TalkToNPC = Instance.new("RemoteEvent")
+TalkToNPC.Name = "TalkToNPC"
+TalkToNPC.Parent = RemoteEvents
+
+local GetShopInventory = Instance.new("RemoteEvent")
+GetShopInventory.Name = "GetShopInventory"
+GetShopInventory.Parent = RemoteEvents
+
+local PurchaseItem = Instance.new("RemoteEvent")
+PurchaseItem.Name = "PurchaseItem"
+PurchaseItem.Parent = RemoteEvents
+
 -- UI Update Events (Server -> Client)
 local UpdatePlayerData = Instance.new("RemoteEvent")
 UpdatePlayerData.Name = "UpdatePlayerData"
@@ -56,6 +69,7 @@ UpdateClanData.Parent = RemoteEvents
 local DungeonManager = require(script.Parent.DungeonManager)
 local ClanManager = require(script.Parent.ClanManager)
 local PlayerManager = require(script.Parent.PlayerManager)
+local NPCManager = require(script.Parent.NPCManager)
 
 -- Dungeon volunteering
 VolunteerForDungeon.OnServerEvent:Connect(function(player, dungeonTier)
@@ -118,6 +132,40 @@ end)
 RequestManufacturing.OnServerEvent:Connect(function(player, itemType)
 	local success, result = ClanManager:RequestManufacturing(player, itemType)
 	RequestManufacturing:FireClient(player, success, result)
+end)
+
+-- Talk to NPC
+TalkToNPC.OnServerEvent:Connect(function(player, npcId, dialogueKey)
+	local dialogue, message = NPCManager:GetDialogue(player, npcId, dialogueKey)
+	if dialogue then
+		TalkToNPC:FireClient(player, true, dialogue, npcId)
+	else
+		TalkToNPC:FireClient(player, false, message or "Dialogue not found")
+	end
+end)
+
+-- Get shop inventory
+GetShopInventory.OnServerEvent:Connect(function(player, npcId)
+	local inventory, message = NPCManager:GetShopInventory(player, npcId)
+	if inventory then
+		GetShopInventory:FireClient(player, true, inventory)
+	else
+		GetShopInventory:FireClient(player, false, message or "Shop not found")
+	end
+end)
+
+-- Purchase item
+PurchaseItem.OnServerEvent:Connect(function(player, npcId, itemId)
+	local success, result = NPCManager:PurchaseItem(player, npcId, itemId)
+	if success then
+		local playerData = PlayerManager:GetPlayerData(player)
+		if playerData then
+			UpdatePlayerData:FireClient(player, playerData:ToTable())
+		end
+		PurchaseItem:FireClient(player, true, result)
+	else
+		PurchaseItem:FireClient(player, false, result)
+	end
 end)
 
 print("RemoteEvents initialized")
