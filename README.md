@@ -80,20 +80,44 @@ Roblox Studio
 .\model_to_roblox.ps1 -Source manual -ModelName "imported_model" -SkipExport -AutoCommit
 ```
 
-## File Structure
+## Project Structure
 
 ```
 okAPI/
-├── model_to_roblox.ps1          # Main unified workflow script
-├── blender_to_roblox.py         # Python alternative
-├── fusion360_control.py          # Fusion 360 MCP interface
-├── setup_fusion360_mcp.ps1      # Fusion 360 setup
-├── start_fusion_mcp_server.bat  # MCP server startup
-├── assets/
-│   ├── models/                  # ReplicatedStorage models
-│   └── workspace_models/         # Workspace models
-└── src/                          # Game scripts
+├── 📄 Scripts & Tools
+│   ├── model_to_roblox.ps1          # Main unified workflow script
+│   ├── model_to_roblox.py            # Python alternative
+│   ├── auto_commit.ps1               # Quick Git commit helper
+│   ├── search_roblox_store.ps1      # Roblox store search helper
+│   ├── figma_to_roblox.ps1           # Figma export workflow
+│   ├── fusion360_control.py          # Fusion 360 MCP interface
+│   ├── setup_fusion360_mcp.ps1      # Fusion 360 setup
+│   └── start_fusion_mcp_server.bat  # MCP server startup
+│
+├── 📁 assets/                        # All game assets
+│   ├── animations/                   # Animation files (see README.md)
+│   ├── models/                       # ReplicatedStorage models (see README.md)
+│   ├── sounds/                       # Audio files (see README.md)
+│   ├── textures/                     # Texture files (see README.md)
+│   ├── ui/                           # UI assets (see README.md)
+│   └── workspace_models/              # Workspace models (see README.md)
+│
+├── 📁 src/                           # Game source code
+│   ├── client/                       # Client scripts (see README.md)
+│   │   └── ui/                       # UI scripts (see README.md)
+│   ├── server/                       # Server scripts (see README.md)
+│   └── shared/                       # Shared modules (see README.md)
+│
+└── 📚 Documentation
+    ├── README.md                     # This file
+    ├── WORKFLOW_EXPLAINED.md         # Complete workflow guide
+    ├── ROBLOX_WORKFLOW.md            # Basic Roblox workflow
+    ├── UI_TOOLS_INTEGRATION.md       # Design tools integration
+    ├── ROBLOX_STORE_GUIDE.md         # Roblox store guide
+    └── [folder]/README.md            # Each folder has its own README
 ```
+
+**📖 Every folder has a README.md with detailed descriptions!**
 
 ## Troubleshooting
 
@@ -134,9 +158,29 @@ See `WORKFLOW_EXPLAINED.md` for detailed workflow information.
 
 ## Documentation
 
+### 📚 Main Guides
 - `WORKFLOW_EXPLAINED.md` - **Start here!** Complete workflow explanation
 - `ROBLOX_WORKFLOW.md` - Basic Roblox + GitHub workflow
+- `UI_TOOLS_INTEGRATION.md` - Figma, Cursor, and design tools integration
+- `ROBLOX_STORE_GUIDE.md` - How to find and import models from Roblox store
+
+### 🛠️ Setup Guides
 - `BLENDER_TO_ROBLOX_README.md` - Blender-specific details
 - `FUSION360_MCP_SETUP.md` - Fusion 360 MCP setup guide
-- `UI_TOOLS_INTEGRATION.md` - Figma, Cursor, and design tools integration
+
+### 📁 Folder Documentation
+Each folder has its own README.md with detailed descriptions:
+- `assets/README.md` - Assets overview
+- `assets/animations/README.md` - Animation files
+- `assets/models/README.md` - ReplicatedStorage models
+- `assets/workspace_models/README.md` - Workspace models
+- `assets/sounds/README.md` - Audio files
+- `assets/textures/README.md` - Texture files
+- `assets/ui/README.md` - UI assets guide
+- `assets/ui/ORGANIZATION.md` - UI organization guide
+- `src/README.md` - Source code overview
+- `src/client/README.md` - Client scripts
+- `src/server/README.md` - Server scripts
+- `src/shared/README.md` - Shared modules
+- `src/client/ui/README.md` - UI scripts
 
