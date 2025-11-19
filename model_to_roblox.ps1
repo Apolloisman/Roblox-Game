@@ -165,7 +165,7 @@ Write-Step "STEP 1: Exporting Model" "Cyan"
 if (-not $SkipExport) {
     switch ($Source.ToLower()) {
         "blender" {
-            if (-not $ObjectPrefix) { $ObjectPrefix = "BJ_" }
+            if (-not $ObjectPrefix) { $ObjectPrefix = "MODEL_" }
             if (Test-Path $fbxPath) {
                 Write-Host "✓ FBX file found: $fbxPath" -ForegroundColor Green
             } else {

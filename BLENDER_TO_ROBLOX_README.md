@@ -26,8 +26,8 @@ python blender_to_roblox.py my_model MY_ Workspace --commit
 
 ## Parameters
 
-- `-ModelName` / `model_name`: Name of the model (default: "blackjack_table")
-- `-ObjectPrefix` / `object_prefix`: Prefix for Blender objects to export (default: "BJ_")
+- `-ModelName` / `model_name`: Name of the model (default: "model")
+- `-ObjectPrefix` / `object_prefix`: Prefix for Blender objects to export (default: "MODEL_")
 - `-Destination`: Where to place model - "Workspace" or "ReplicatedStorage" (default: "Workspace")
 - `-AutoCommit` / `--commit`: Automatically commit and push to Git
 - `-SkipBlenderExport` / `--skip-export`: Skip Blender export step (if FBX already exists)
@@ -35,8 +35,8 @@ python blender_to_roblox.py my_model MY_ Workspace --commit
 ## Examples
 
 ```powershell
-# Export blackjack table to Workspace with auto-commit
-.\blender_to_roblox.ps1 -ModelName "blackjack_table" -AutoCommit
+# Export model to Workspace with auto-commit
+.\blender_to_roblox.ps1 -ModelName "my_model" -AutoCommit
 
 # Export custom model to ReplicatedStorage
 .\blender_to_roblox.ps1 -ModelName "weapon_model" -ObjectPrefix "WP_" -Destination "ReplicatedStorage"

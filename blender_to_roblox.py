@@ -11,8 +11,8 @@ from pathlib import Path
 
 def main():
     # Parse arguments
-    model_name = sys.argv[1] if len(sys.argv) > 1 else "blackjack_table"
-    object_prefix = sys.argv[2] if len(sys.argv) > 2 else "BJ_"
+    model_name = sys.argv[1] if len(sys.argv) > 1 else "model"
+    object_prefix = sys.argv[2] if len(sys.argv) > 2 else "MODEL_"
     destination = sys.argv[3] if len(sys.argv) > 3 else "Workspace"
     auto_commit = "--commit" in sys.argv
     skip_export = "--skip-export" in sys.argv
