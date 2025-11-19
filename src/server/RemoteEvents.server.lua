@@ -168,5 +168,78 @@ PurchaseItem.OnServerEvent:Connect(function(player, npcId, itemId)
 	end
 end)
 
+-- Teleportation Events
+local TeleportToDungeon = Instance.new("RemoteEvent")
+TeleportToDungeon.Name = "TeleportToDungeon"
+TeleportToDungeon.Parent = RemoteEvents
+
+local TeleportToUpperTier = Instance.new("RemoteEvent")
+TeleportToUpperTier.Name = "TeleportToUpperTier"
+TeleportToUpperTier.Parent = RemoteEvents
+
+local TeleportToMainServer = Instance.new("RemoteEvent")
+TeleportToMainServer.Name = "TeleportToMainServer"
+TeleportToMainServer.Parent = RemoteEvents
+
+local TeleportToWorkArea = Instance.new("RemoteEvent")
+TeleportToWorkArea.Name = "TeleportToWorkArea"
+TeleportToWorkArea.Parent = RemoteEvents
+
+-- Work Area Events
+local StartWork = Instance.new("RemoteEvent")
+StartWork.Name = "StartWork"
+StartWork.Parent = RemoteEvents
+
+local StopWork = Instance.new("RemoteEvent")
+StopWork.Name = "StopWork"
+StopWork.Parent = RemoteEvents
+
+-- Handle teleportation
+local TeleportManager = require(script.Parent.TeleportManager)
+local WorkAreaManager = require(script.Parent.WorkAreaManager)
+
+TeleportToDungeon.OnServerEvent:Connect(function(player, dungeonTier)
+	local success, message = TeleportManager:TeleportToDungeon(player, dungeonTier)
+	TeleportToDungeon:FireClient(player, success, message)
+end)
+
+TeleportToUpperTier.OnServerEvent:Connect(function(player, tierName)
+	local success, message = TeleportManager:TeleportToUpperTier(player, tierName)
+	TeleportToUpperTier:FireClient(player, success, message)
+end)
+
+TeleportToMainServer.OnServerEvent:Connect(function(player)
+	local success, message = TeleportManager:TeleportToMainServer(player)
+	TeleportToMainServer:FireClient(player, success, message)
+end)
+
+TeleportToWorkArea.OnServerEvent:Connect(function(player, workAreaName)
+	local success, message = TeleportManager:TeleportToWorkArea(player, workAreaName)
+	TeleportToWorkArea:FireClient(player, success, message)
+end)
+
+-- Handle work areas
+StartWork.OnServerEvent:Connect(function(player, workAreaName)
+	local success, result = WorkAreaManager:StartWork(player, workAreaName)
+	if success then
+		local playerData = PlayerManager:GetPlayerData(player)
+		if playerData then
+			UpdatePlayerData:FireClient(player, playerData:ToTable())
+		end
+	end
+	StartWork:FireClient(player, success, result)
+end)
+
+StopWork.OnServerEvent:Connect(function(player)
+	local success, result = WorkAreaManager:StopWork(player)
+	if success then
+		local playerData = PlayerManager:GetPlayerData(player)
+		if playerData then
+			UpdatePlayerData:FireClient(player, playerData:ToTable())
+		end
+	end
+	StopWork:FireClient(player, success, result)
+end)
+
 print("RemoteEvents initialized")
 

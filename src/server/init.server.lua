@@ -6,6 +6,8 @@ local StartingArea = require(script.StartingArea)
 local DungeonManager = require(script.DungeonManager)
 local ClanManager = require(script.ClanManager)
 local NPCManager = require(script.NPCManager)
+local TeleportManager = require(script.TeleportManager)
+local WorkAreaManager = require(script.WorkAreaManager)
 local RemoteEvents = require(script.RemoteEvents)
 
 -- Initialize all systems
@@ -16,6 +18,8 @@ StartingArea:Initialize()
 DungeonManager:Initialize()
 ClanManager:Initialize()
 NPCManager:Initialize()
+TeleportManager:Initialize()
+WorkAreaManager:Initialize()
 require(script.RemoteEvents) -- This sets up RemoteEvents
 
 print("All systems initialized!")

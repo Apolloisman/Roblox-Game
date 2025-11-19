@@ -102,18 +102,19 @@ function GameUI:CreateMainUI()
 	housingLabel.TextXAlignment = Enum.TextXAlignment.Left
 	housingLabel.Parent = mainFrame
 	
-	-- Buttons Frame
+	-- Buttons Frame (2 rows)
 	local buttonsFrame = Instance.new("Frame")
 	buttonsFrame.Name = "ButtonsFrame"
-	buttonsFrame.Size = UDim2.new(1, -20, 0, 50)
+	buttonsFrame.Size = UDim2.new(1, -20, 0, 100)
 	buttonsFrame.Position = UDim2.new(0, 10, 0, 150)
 	buttonsFrame.BackgroundTransparency = 1
 	buttonsFrame.Parent = mainFrame
 	
+	-- Row 1
 	-- Dungeon Button
 	local dungeonButton = Instance.new("TextButton")
 	dungeonButton.Name = "DungeonButton"
-	dungeonButton.Size = UDim2.new(0.48, 0, 1, 0)
+	dungeonButton.Size = UDim2.new(0.48, 0, 0, 45)
 	dungeonButton.Position = UDim2.new(0, 0, 0, 0)
 	dungeonButton.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
 	dungeonButton.Text = "Dungeons"
@@ -126,11 +127,28 @@ function GameUI:CreateMainUI()
 		GameUI:OpenDungeonMenu()
 	end)
 	
+	-- Travel Button
+	local travelButton = Instance.new("TextButton")
+	travelButton.Name = "TravelButton"
+	travelButton.Size = UDim2.new(0.48, 0, 0, 45)
+	travelButton.Position = UDim2.new(0.52, 0, 0, 0)
+	travelButton.BackgroundColor3 = Color3.fromRGB(150, 100, 255)
+	travelButton.Text = "Travel"
+	travelButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	travelButton.TextSize = 14
+	travelButton.Font = Enum.Font.GothamBold
+	travelButton.Parent = buttonsFrame
+	
+	travelButton.MouseButton1Click:Connect(function()
+		GameUI:OpenTravelMenu()
+	end)
+	
+	-- Row 2
 	-- Clan Button
 	local clanButton = Instance.new("TextButton")
 	clanButton.Name = "ClanButton"
-	clanButton.Size = UDim2.new(0.48, 0, 1, 0)
-	clanButton.Position = UDim2.new(0.52, 0, 0, 0)
+	clanButton.Size = UDim2.new(0.48, 0, 0, 45)
+	clanButton.Position = UDim2.new(0, 0, 0, 55)
 	clanButton.BackgroundColor3 = Color3.fromRGB(255, 150, 100)
 	clanButton.Text = "Clan"
 	clanButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -140,6 +158,22 @@ function GameUI:CreateMainUI()
 	
 	clanButton.MouseButton1Click:Connect(function()
 		GameUI:OpenClanMenu()
+	end)
+	
+	-- Work Button
+	local workButton = Instance.new("TextButton")
+	workButton.Name = "WorkButton"
+	workButton.Size = UDim2.new(0.48, 0, 0, 45)
+	workButton.Position = UDim2.new(0.52, 0, 0, 55)
+	workButton.BackgroundColor3 = Color3.fromRGB(100, 255, 150)
+	workButton.Text = "Work"
+	workButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	workButton.TextSize = 14
+	workButton.Font = Enum.Font.GothamBold
+	workButton.Parent = buttonsFrame
+	
+	workButton.MouseButton1Click:Connect(function()
+		GameUI:OpenWorkMenu()
 	end)
 end
 
@@ -164,10 +198,23 @@ function GameUI:OpenDungeonMenu()
 	warn("Dungeon menu - to be implemented")
 end
 
+function GameUI:OpenTravelMenu()
+	-- Open travel/teleport menu
+	local TeleportUI = require(script.Parent.TeleportUI)
+	TeleportUI:ShowTeleportMenu()
+end
+
 function GameUI:OpenClanMenu()
 	-- Open clan menu
 	-- This will be implemented in ClanUI
 	warn("Clan menu - to be implemented")
+end
+
+function GameUI:OpenWorkMenu()
+	-- Open work area menu
+	local WorkAreaUI = require(script.Parent.WorkAreaUI)
+	-- Show work area selection
+	warn("Work menu - select work area")
 end
 
 return GameUI
